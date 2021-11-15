@@ -35,7 +35,6 @@
   }
 
   .toolbar {
-    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -68,9 +67,8 @@
 
   .content {
     display: flex;
-    margin: 82px auto 32px;
+    margin: 0 0 32px 0;
     padding: 0 16px;
-    max-width: 960px;
     flex-direction: column;
     align-items: center;
   }
@@ -306,31 +304,61 @@
 </div>
 
 <div class="content" role="main">
-
-  <!-- Highlight Card -->
-  <div class="card highlight-card card-small">
-
-    <span>Upload an image to get started!</span>
-
-    <svg id="rocket-smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632" viewBox="0 0 516.119 1083.632">
-      <title>Rocket Ship Smoke</title>
-      <path id="Path_40" data-name="Path 40" d="M644.6,141S143.02,215.537,147.049,870.207s342.774,201.755,342.774,201.755S404.659,847.213,388.815,762.2c-27.116-145.51-11.551-384.124,271.9-609.1C671.15,139.365,644.6,141,644.6,141Z" transform="translate(-147.025 -140.939)" fill="#f5f5f5"/>
-    </svg>
-
+  <div class="col-md-6 text-center mt-4">
+    <h2>Abstract</h2>
+    <p style="text-align: justify;">
+      Various approaches and algorithms have been created to reduce the 
+      noise from images and improve their overall clarity. 
+      The use of Reinforcement Learning (RL), to achieve this task has, so far, 
+      been uncommon. One such method/ framework 
+      is <a href="https://github.com/rfuruta/pixelRL" target="_blank">PixelRL</a>, which treats each 
+      and every pixel as a state and learns efficiently. 
+      Here, we propose to use a modified PixelRL framework to denoise color images.
+      <br>
+      The Authors of PixelRL had utilized Python with ChainerRL to 
+      achieve their goals. We however, decided to extend the same 
+      knowledge with the use of Pytorch because of our familiarity 
+      with it and its ease of use. The original network was rebuilt in 
+      Pytorch and a test run was made to mimic the original paper to 
+      check if the model was performing the way that it was designed to. 
+      The dataset BSD68, a set of noisy grayscale images which was proposed 
+      by the author, was used to complete the test run. The network 
+      was trained with 428 training images and 68 test images with a maximum episode 
+      time of tmax=5. The training was done on a google colab 12Gb GPU with a total of 
+      10,000 episodes which took a total of 5 hours to complete. 
+      <br>
+      The code, which was tested for grayscale images, was modified to accept color images. 
+      The input dimensions were changed from 70 x 70 x 1 to 70 x 70 x 3 to accommodate the 3 color channels 
+      necessary for representing a BGR image. Additionally, the action space of the model was 
+      increased from 9 actions to 12 to accommodate color-specific actions not present in the 
+      original model. Initially, the CBSD68 dataset that contained 68 color images was used 
+      to test the correctness of the model. The model was trained for 2500 episodes, with an 
+      episode length of 5 actions and a batch size of 22, on a GTX 1080ti GPU. The training 
+      took a total of 30 minutes to complete. The results were not great, as our model still 
+      had a large learning loss and a relatively low reward, but provided a starting point for 
+      further testing and development. We then proceeded to augment our training dataset with the 
+      4744 image Waterloo picture dataset that was also used by the paper’s authors. The model was 
+      again trained on a GTX 1080ti GPU but was trained for 5000 episodes with 5 actions each and a 
+      batch size of 32. These changes were made to try to take advantage of the greater training corpora. 
+      This resulted in a total training time of 3 hours.
+    </p>
   </div>
-
 
   <input style="visibility: hidden;" type="file" accept="image/jpg" #imgFileInput (change)="previewImage($event)"/>
   <!-- <input type="hidden" #selection> -->
-  <div class="card-container" style="margin: 4rem 0;">
+  <div class="card-container" style="margin: 3rem 0;">
     <a class="card" rel="noopener" (click)="uploadImage()">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
       <span>Upload an image</span>
     </a>
 
+    <a class="card" rel="noopener" (click)="useSample()">
+      <span>Use sample image</span>
+    </a>
+
   </div>
 
-  <div *ngIf="selectedImage" class="row col-md-12 justify-content-center">
+  <div *ngIf="selectedImage" class="row col-md-8 justify-content-center">
     <div class="col-md-4 text-center">
       <h4>Original Image</h4>
       <img style="max-width: 100%; height: auto;" [src]="base64" >
@@ -373,7 +401,7 @@ print(response.json())
 
   <!-- Links -->
   <h2 style="margin-top: 4rem;">Developed by</h2>
-  <div class="row col-6 text-center" style="margin-bottom: 4rem;">
+  <div class="row col-md-6 text-center" style="margin-bottom: 4rem;">
     <a class="col-4" href="https://manthan.space" target="_blank" rel="noopener">
       <span>Manthan CS</span>
     </a>
@@ -383,7 +411,7 @@ print(response.json())
     </a>
 
     <a class="col-4" href="https://github.com/GillesAye" target="_blank" rel="noopener">
-      <span>Gilles Aramel-Aye</span>
+      <span>Gilles-armel Aye</span>
     </a>
   </div>
 
