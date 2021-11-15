@@ -1,7 +1,16 @@
 import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
+  })
+};
 
 @Component({
   selector: 'app-root',
@@ -51,7 +60,7 @@ export class AppComponent {
    */
   handleReaderLoaded(readerEvt: any){
     this.base64= readerEvt.target.result;
-    this.http.post(this.BASE_IP+this.url, {data: this.base64}).subscribe(data =>{
+    this.http.post(this.BASE_IP+this.url, JSON.stringify({data: this.base64}), httpOptions).subscribe(data =>{
       // console.log(data);
       if((data as any).Error != undefined){
         this.status = "Error! Invalid image or image too big"
@@ -95,7 +104,7 @@ export class AppComponent {
       result => {
         this.selectedImage = 2;
         this.base64= result as string;
-        this.http.post(this.BASE_IP+this.url, {data: this.base64}).subscribe(data =>{
+        this.http.post(this.BASE_IP+this.url, JSON.stringify({data: this.base64}), httpOptions).subscribe(data =>{
           // console.log(data);
           if((data as any).Error != undefined){
             this.status = "Error! Invalid image or image too big"
