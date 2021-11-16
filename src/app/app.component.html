@@ -357,12 +357,12 @@
   <div *ngIf="selectedImage" class="row col-md-8 justify-content-center">
     <div class="col-md-4 text-center">
       <h4>Original Image</h4>
-      <img style="max-width: 100%; height: auto;" [src]="base64" >
+      <img id="original" style="max-width: 100%; height: 138px;" [src]="base64" >
     </div>
     <div class="col-md-4 text-center">
       <h4>Noisy Image (𝜎 = 25)</h4>
       <span *ngIf="noisyBase64 == ''">{{status}}</span>
-      <img *ngIf="noisyBase64 != ''" style="max-width: 100%; height: auto;" [src]="noisyBase64" >
+      <img id="noisy" *ngIf="noisyBase64 != ''" style="max-width: 100%; height: auto;" [src]="noisyBase64" >
     </div>
     <div class="col-md-4 text-center">
       <h4>Denoised Image</h4>
@@ -370,7 +370,7 @@
       <img *ngIf="noisyBase64 != ''" style="max-width: 100%; height: auto;" [src]="predictedBase64" >
     </div>
   </div>
-  <p *ngIf="noisyBase64 != ''"><b>PSNR : </b>{{psnr}}</p>
+  <p *ngIf="noisyBase64 != ''" style="margin-top: 2rem;"><b>PSNR : </b>{{psnr}}</p>
 
   <!-- Next Steps -->
   <h2 style="margin-top: 4rem;">Interact from the Terminal!</h2>
