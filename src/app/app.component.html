@@ -360,7 +360,7 @@
       <img style="max-width: 100%; height: auto;" [src]="base64" >
     </div>
     <div class="col-md-4 text-center">
-      <h4>Noisy Image</h4>
+      <h4>Noisy Image (𝜎 = 25)</h4>
       <span *ngIf="noisyBase64 == ''">{{status}}</span>
       <img *ngIf="noisyBase64 != ''" style="max-width: 100%; height: auto;" [src]="noisyBase64" >
     </div>
@@ -370,7 +370,7 @@
       <img *ngIf="noisyBase64 != ''" style="max-width: 100%; height: auto;" [src]="predictedBase64" >
     </div>
   </div>
-  <p *ngIf="noisyBase64 != ''"><b>Total Reward : </b>{{totalReward}}</p>
+  <p *ngIf="noisyBase64 != ''"><b>PSNR : </b>{{psnr}}</p>
 
   <!-- Next Steps -->
   <h2 style="margin-top: 4rem;">Interact from the Terminal!</h2>

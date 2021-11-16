@@ -26,7 +26,7 @@ export class AppComponent {
   BASE_IP = 'https://color-img-denoise.herokuapp.com/';
   // BASE_IP = 'http://127.0.0.1:5000/';
   url = 'post_image';
-  totalReward: any = '0';
+  psnr: any = '0';
   status = 'Working.....';
 
 
@@ -71,7 +71,7 @@ export class AppComponent {
       var pb64 = (data as any).prediction.toString()
       this.noisyBase64 = 'data:image/jpeg;base64,' + nb64.substring(2,nb64.length-1);
       this.predictedBase64 = 'data:image/jpeg;base64,' + pb64.substring(2,pb64.length-1);
-      this.totalReward = (data as any).total_reward;
+      this.psnr = (data as any).psnr;
     })
   }
 
@@ -115,7 +115,7 @@ export class AppComponent {
           var pb64 = (data as any).prediction.toString()
           this.noisyBase64 = 'data:image/jpeg;base64,' + nb64.substring(2,nb64.length-1);
           this.predictedBase64 = 'data:image/jpeg;base64,' + pb64.substring(2,pb64.length-1);
-          this.totalReward = (data as any).total_reward;
+          this.psnr = (data as any).psnr;
         })
       }
     )
