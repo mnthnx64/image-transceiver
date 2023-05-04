@@ -1,14 +1,13 @@
-# ImageTransceiver
+# Color PixelRL - ASU Course Project
+This repo contains the angular code used to host the interactive website for our ASU course project.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
-Client side repo for Color image denoising using [PixelRL](https://github.com/mnthnx64/colorimg-denoise-PixelRL)
+## Interact with the trained model by uploading your own images!
+Workflow of the current version:
+- Uploading an image to the model server
+- Server generates a noisy version of the image by adding guassian noise.
+- Denoises the noisy image and returns to the client
+- Displays all the images with a measure of PSNR
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Build
-
-Run `ng build --prod --output-path docs --base-href /image-transceiver/` to build the project. The build artifacts will be stored in the `docs/` directory.
-
-
+## Also see
+- PixelRL code repo: [Link](https://github.com/rfuruta/pixelRL)
+- Color PixelRL code Repo: [Link](https://github.com/mnthnx64/colorimg-denoise-PixelRL)
