@@ -1,5 +1,5 @@
 # Color PixelRL - ASU Course Project
-This repo contains the angular code used to host the interactive website for our ASU course project. View the demo [here](https://mnthnx64.github.io/image-transceiver/)
+This repo contains the angular code used to host the interactive website for our ASU course project. View the demo [here](https://mnthnx64.github.io/image-transceiver/).
 
 ## Interact with the trained model by uploading your own images!
 Workflow of the current version:
@@ -10,4 +10,4 @@ Workflow of the current version:
 
 ## Also see
 - PixelRL code repo: [Link](https://github.com/rfuruta/pixelRL)
-- Color PixelRL code Repo: [Link](https://github.com/mnthnx64/colorimg-denoise-PixelRL)
+- Color pixelRL code repo (ours): [Link](https://github.com/mnthnx64/colorimg-denoise-PixelRL)
