@@ -1,5 +1,5 @@
 # Color PixelRL - ASU Course Project
-This repo contains the angular code used to host the interactive website for our ASU course project.
+This repo contains the angular code used to host the interactive website for our ASU course project. View the demo [here](https://mnthnx64.github.io/image-transceiver/)
 
 ## Interact with the trained model by uploading your own images!
 Workflow of the current version:
